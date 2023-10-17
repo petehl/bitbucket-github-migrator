@@ -1,0 +1,19 @@
+{
+  "name": "bitbucket-github-migrator",
+  "version": "1.0.0",
+  "description": "Script to migrate bitbucket repos to Github",
+  "main": "migrator.js",
+  "repository": "https://github.com/petehl/bitbucket-github-migrator.git",
+  "author": "Peter Latham <peter.latham@laerdal.com>",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "migrate": "node migrator.js",
+    "cleanup": "CLEANUP_REPOS=true node migrator.js",
+    "bitbucket": "BB_TEST=true node migrator.js"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1"
+  }
+}

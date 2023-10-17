@@ -1,0 +1,8 @@
+script.sh
+node_modules
+
+.env
+
+/repomirrors/*
+
+repos.csv
