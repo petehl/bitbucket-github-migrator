@@ -7,17 +7,16 @@ Requires `git` & `git-lfs` installed and authenticated via http to github and bi
 Installed a gh client  - https://cli.github.com
 
 Required gh extension - for granting elevated permissions
-`gh extension install mislav/gh-repo-collab` 
-
+`gh extension install mislav/gh-repo-collab`
 
 List of repositories in a csv file called `repos.csv` with the format
 
-`<reponame>,<newname?>,<archive?>,<renameOld?>,<topics+separated>,<admin?>`
+`<reponame>,<newname?>,<archive?>,<renameOld?>,<topics+separated?>,<admin teams?>`
 
 ```csv
-string-library,,Y,Y
-web-app,,Y,Y
-ios-app,,Y,Y
+string-library,,Y,N,js+react,
+web-app,html-app,Y,N,,
+ios-app,,Y,N,,test-team
 ```
 
 ### Environment variables

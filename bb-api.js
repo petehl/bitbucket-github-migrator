@@ -17,7 +17,7 @@ export const getRepo = async (owner, slug, auth) => {
     return repo;
 }
 
-export const renameRepo = async (owner, slug, auth, undo = false) => {
+export const renameRepo = async (owner, slug, auth, newDescription, undo = false) => {
     const { user, appPassword } = auth;
     const basicAuth = Buffer.from(`${user}:${appPassword}`).toString('base64');
 
@@ -29,8 +29,12 @@ export const renameRepo = async (owner, slug, auth, undo = false) => {
     const rslug = undo ? `_gh_${slug}` : slug;
     const rename = !undo ? `_gh_${slug}` : slug;
 
+    const body = {
+        name: rename,
+    }
+    if (newDescription !== undefined) { body.description = newDescription; }
 
-    const response = await fetch(`https://api.bitbucket.org/2.0/repositories/${owner}/${rslug}`, { method: 'PUT', headers, body: JSON.stringify({name: rename}) });
+    const response = await fetch(`https://api.bitbucket.org/2.0/repositories/${owner}/${rslug}`, { method: 'PUT', headers, body: JSON.stringify(body) });
     if (!response.ok) {
         throw new Error(await response.text());
     }
